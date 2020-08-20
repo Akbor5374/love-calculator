@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>love-calculator</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <style>
+           #love-calculator-area{
+               max-width: 100%;
+               height: 100vh;
+               background-image: url("bg.jpg");
+               background-size: cover;
+               background-position: center;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+           }
+           .calculator-area{
+               width: 700px;
+               height: 400px;
+               border-radius: 20px;
+               background-color:rgba(17, 16, 16, 0.4);
+               box-shadow: 0px 0px 25px rgb(104, 103, 103);
+           }
+           .content-area{
+               width: 100%;
+               height: 70px;
+               background-color: rgba(255, 255, 255, .9);
+               border-top-left-radius: 20px;
+               border-top-right-radius: 20px;
+               padding: 10px;
+               display: flex;
+               justify-content: center;
+           }
+           .content-area img{
+               width: 60px;
+           }
+           .content-area h2{
+               display: inline;
+               margin: 2px;
+               font-weight: 700;
+               color: hotpink;
+           }
+           .input-area{
+               margin: 40px;
+           }
+           input{
+             width: 100%;
+             height: 50px;
+             border: none;
+             border-radius: 50px;
+             box-shadow: 0px 0px 20px black;
+             padding: 10px;
+             font-size: 20px;
+           }
+           input:focus{
+               background-color: hotpink;
+               color: white;
+               font-size: 20px;
+           }
+           input::placeholder{
+               color: hotpink;
+           }
+           .yName{
+               margin-bottom: 20px;
+           }
+           .btn{
+               margin: auto;
+           }
+           #cushName{
+               margin-bottom: 10px;
+           }
+           .button{
+               text-align: center;
+               margin-top: 50px;
+           }
+           #get-res{
+               width: 250px;
+               height: 50px;
+               border: none;
+               border-radius: 50px;
+               font-size: 18px;
+               font-weight: 700;
+               background-image: linear-gradient(45deg, hotpink, rgb(240, 10, 125));
+               color: white;
+               box-shadow: 0px 0px 20px black;
+           }
+           #get-res:hover{
+            background-image: linear-gradient(90deg, rgb(240, 10, 125), hotpink);
+            box-shadow: 0px 0px 20px white;
+           }
+           .text{
+               font-weight: 700;
+               color: white;
+               display: inline;
+           }
+           .footer-area{
+               text-align: center;
+           }
+           .footer-area h4{
+               margin: 5px;
+           }
+           .footer-area img{
+               width: 30px;
+           }
+           .result-area{
+               display: none;
+           }
+           .result-area h3{
+            font-weight: 700;
+            text-align: center;
+            color:white;
+            margin-bottom: 0px;
+           }
+           .result-area h2{
+               font-size: 100px;
+               font-weight: 700;
+               text-align: center;
+               color:rgb(240, 10, 10);
+               margin-top: 0px;
+           }
+            .button{
+               margin: auto;
+           }
+           .result-area p{
+               font-size: 18px;
+               margin: 20px;
+               color: white;
+           }
+        </style>
+    </head>
+    <body>
+      <section id="love-calculator-area">
+           <div class="calculator-area">
+              <div class="content-area">
+                  <img src="love.png">
+                  <h2>Love Calculator</h2>
+              </div>
+              <div class="input-area">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <input type="text" class="yName" id="yourName" placeholder="Your Name">
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" id="cushName" placeholder="Your crush/gf or bf Name">
+                        </div>
+                    </div>
+                    <div class="button">
+                        <button type="button" id="get-res">Love Calculate</button>
+                    </div>
+              </div>
+              <div class="footer-area">
+                <img src="logo.png">
+                <h4 class="text">True love is putting someone else before yourself</h4>
+                <img src="logo.png">
+              </div>
+              <div class="result-area">
+                  <h3><span id="yName"></span> + <span id="cName"></span></h3>
+                  <h2 id="calculate-result"><span id="res"></span>%</h2>
+                  <div class="button">
+                    <button type="button"  id="btn" class="btn btn-danger button">Back</button>
+                  </div>
+              </div>
+           </div>
+      </section>
+      <script>
+          document.getElementById("get-res").addEventListener("click", function(){
+              const firstInput = document.getElementById("yourName").value;
+              const lastInput = document.getElementById("cushName").value;
+
+              const firstInputValue = firstInput.toUpperCase();
+              const lastInputValue = lastInput.toUpperCase();
+              
+              const fLength = firstInputValue.length;
+              const lLength = lastInputValue.length;
+              
+              document.getElementById("yName").innerText = firstInput;
+              document.getElementById("cName").innerText = lastInput;
+
+              let loveCount = 0;
+              getLoveCount(firstInputValue,fLength);
+              getLoveCount(lastInputValue,lLength);
+
+              function getLoveCount(name,length){
+                for(i = 0; i < length; i++){
+                    let checkLetter = name.substring(i, i+1);
+                    switch(checkLetter){
+                        case "L":
+                            loveCount += 4;
+                            break;
+                        case "O":
+                            loveCount += 4;
+                            break;
+                        case "V":
+                            loveCount += 4;
+                            break;
+                        case "E":
+                            loveCount += 4;
+                            break;
+                        case "A":
+                            loveCount += 2;
+                            break;
+                        case "I":
+                            loveCount += 1;
+                            break;
+                        case "U":
+                            loveCount += 3;
+                            break;
+                        case "M":
+                            loveCount += 2;
+                            break;
+                        case "R":
+                            loveCount += 2;
+                            break;
+                        case "Y":
+                            loveCount += 3;
+                            break;
+                    }
+                }
+              }
+              let TotalCount = 0;
+              if(fLength == lLength){
+                loveCount += 2;
+              }
+
+              else if(loveCount >= 0 && loveCount < 2){
+                TotalCount = 5 - 143/(fLength + lLength);
+              }
+              else if(loveCount >= 2 && loveCount < 4){
+                TotalCount = 10 - 143/(fLength + lLength);
+              }
+              else if(loveCount >= 4 && loveCount < 6){
+                TotalCount = 20 - 143/(fLength + lLength);
+              }
+              else if(loveCount >= 6 && loveCount < 8){
+                TotalCount = 30 - 143/(fLength + lLength);
+              }
+              else if(loveCount >= 8 && loveCount < 10){
+                TotalCount = 40 - 143/(fLength + lLength);
+              }
+              else if(loveCount >= 10 && loveCount < 12){
+                TotalCount = 50 - 143/(fLength + lLength);
+              }
+              else if(loveCount >= 12 && loveCount < 14){
+                TotalCount = 60 - 143/(fLength + lLength);
+              }
+              else if(loveCount >= 14 && loveCount < 16){
+                TotalCount = 70 - 143/(fLength + lLength);
+              }
+              else if(loveCount >= 16 && loveCount < 18){
+                TotalCount = 80 - 143/(fLength + lLength);
+              }
+              else if(loveCount >= 18 && loveCount < 20){
+                TotalCount = 90 - 143/(fLength + lLength);
+              }
+              else if(loveCount >= 20){
+                TotalCount = 100 - 143/(fLength + lLength);
+              }
+              else if(TotalCount > 100){
+                TotalCount = 99;
+              }
+              else{
+                TotalCount = 0;
+              }
+              document.getElementById("yourName").value = '';
+              document.getElementById("cushName").value = '';
+              document.getElementById("res").innerText = Math.round(TotalCount);
+              document.querySelector(".input-area").style.display = "none";
+              document.querySelector(".result-area").style.display = "block";
+          })
+
+          document.getElementById("btn").addEventListener("click", function(){
+              document.querySelector(".input-area").style.display = "block";
+              document.querySelector(".result-area").style.display = "none";
+          })
+      </script>  
+    </body>
+</html>
