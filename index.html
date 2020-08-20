@@ -169,7 +169,11 @@
               const firstInput = document.getElementById("yourName").value;
               const lastInput = document.getElementById("cushName").value;
 
-              const firstInputValue = firstInput.toUpperCase();
+              if(!firstInput || !lastInput){
+                  alert("Please enter your name or your partner name");
+              }
+              else{
+                const firstInputValue = firstInput.toUpperCase();
               const lastInputValue = lastInput.toUpperCase();
               
               const fLength = firstInputValue.length;
@@ -268,6 +272,7 @@
               document.getElementById("res").innerText = Math.round(TotalCount);
               document.querySelector(".input-area").style.display = "none";
               document.querySelector(".result-area").style.display = "block";
+              } 
           })
 
           document.getElementById("btn").addEventListener("click", function(){
