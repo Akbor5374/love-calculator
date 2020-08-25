@@ -112,11 +112,11 @@ function loveCalculate(loveCount,lengthTotal){
     else if(loveCount >= 21 && loveCount < 23){
         totalCount = 125 - 143/lengthTotal;
     }
-    else if(totalCount >= 99){
-        totalCount = 99;
-    }
     else{
         totalCount = 0;
+    }
+    if(totalCount > 100){
+        totalCount = 99;
     }
 }
 
